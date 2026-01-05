@@ -1,4 +1,4 @@
-package internal
+package httpClient
 
 import "github.com/go-resty/resty/v2"
 
