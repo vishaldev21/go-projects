@@ -1,6 +1,6 @@
 package main
 
-import "curl-clone/cmd"
+import "reqster/cmd"
 
 func main() {
 	cmd.Execute()

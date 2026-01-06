@@ -1,11 +1,11 @@
 package cmd
 
 import (
-	"curl-clone/internal/flags"
-	"curl-clone/internal/httpClient"
-	"curl-clone/internal/utils"
 	"fmt"
 	"os"
+	"reqster/internal/flags"
+	"reqster/internal/httpClient"
+	"reqster/internal/utils"
 
 	"github.com/spf13/cobra"
 )
