@@ -1,6 +1,3 @@
-/*
-Copyright © 2026 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 import (
@@ -18,8 +15,10 @@ var query, header, params []string
 
 var rootCmd = &cobra.Command{
 	Use:   "reqster",
-	Short: "A brief description of your application",
-	Long:  ``,
+	Short: "A command-line HTTP request tool with header, query, and parameter support",
+	Long: `Reqster is a lightweight command-line HTTP client that allows you to send HTTP requests 
+with custom headers, query parameters, and URL parameters. It supports multiple HTTP methods 
+and provides a simple interface for testing APIs and interacting with web services from the terminal.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 2 {
 			fmt.Println("method and URL is required")
