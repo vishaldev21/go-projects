@@ -2,7 +2,7 @@ package flags
 
 import "strings"
 
-func Parser(data []string,sep string) map[string]string {
+func Parser(data []string, sep string) map[string]string {
 	result := map[string]string{}
 	for _, val := range data {
 		element := strings.Split(val, sep)

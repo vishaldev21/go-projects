@@ -1,14 +1,27 @@
 package httpClient
 
-import "github.com/go-resty/resty/v2"
+import (
+	"reqster/internal/types"
 
-func PostRequest(url string) (*string, error) {
+	"github.com/go-resty/resty/v2"
+)
+
+func PostRequest(data types.DataP) (*string, error) {
 	client := resty.New()
-	response, err := client.R().Post(url)
+	if len(data.Headers) > 0 {
+		client = client.SetHeaders(data.Headers)
+	}
+	if len(data.Query) > 0 {
+		client = client.SetQueryParams(data.Query)
+	}
+	if len(data.Params) > 0 {
+		client = client.SetPathParams(data.Params)
+	}
+	response, err := client.R().SetBody(data.Body).Post(data.URL)
 	if err != nil {
 		return nil, err
 	}
 	byteData := response.Body()
-	data := string(byteData)
-	return &data, nil
+	stringData := string(byteData)
+	return &stringData, nil
 }

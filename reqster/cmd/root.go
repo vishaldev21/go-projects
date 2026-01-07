@@ -5,6 +5,7 @@ import (
 	"os"
 	"reqster/internal/flags"
 	"reqster/internal/httpClient"
+	"reqster/internal/types"
 	"reqster/internal/utils"
 
 	"github.com/spf13/cobra"
@@ -33,19 +34,16 @@ and provides a simple interface for testing APIs and interacting with web servic
 			fmt.Println("Method not allowed")
 			return
 		}
-		if method == "get" {
-			data := httpClient.GetData{
-				URL:     url,
-				Headers: headerData,
-				Params:  paramsData,
-				Query:   queryData,
-			}
-			response, err := httpClient.GetRequest(data)
-			if err != nil {
-				fmt.Println(err)
-			}
-			fmt.Println(*response)
-			return
+		data := types.DataP{
+			URL:     url,
+			Headers: headerData,
+			Params:  paramsData,
+			Query:   queryData,
+			Body:    body,
+		}
+		switch method {
+		case "get":
+			utils.Handler(data, httpClient.GetRequest)
 		}
 	},
 }

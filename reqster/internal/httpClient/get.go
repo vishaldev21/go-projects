@@ -1,17 +1,12 @@
 package httpClient
 
 import (
+	"reqster/internal/types"
+
 	"github.com/go-resty/resty/v2"
 )
 
-type GetData struct {
-	URL     string
-	Headers map[string]string
-	Params  map[string]string
-	Query   map[string]string
-}
-
-func GetRequest(data GetData) (*string, error) {
+func GetRequest(data types.DataP) (*string, error) {
 	client := resty.New()
 	if len(data.Headers) > 0 {
 		client = client.SetHeaders(data.Headers)
