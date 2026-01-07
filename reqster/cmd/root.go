@@ -46,6 +46,8 @@ and provides a simple interface for testing APIs and interacting with web servic
 			utils.Handler(data, httpClient.GetRequest)
 		case "post":
 			utils.Handler(data, httpClient.PostRequest)
+		case "put":
+			utils.Handler(data, httpClient.PutRequest)
 		case "delete":
 			utils.Handler(data, httpClient.DeleteRequest)
 		}
