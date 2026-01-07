@@ -44,6 +44,10 @@ and provides a simple interface for testing APIs and interacting with web servic
 		switch method {
 		case "get":
 			utils.Handler(data, httpClient.GetRequest)
+		case "post":
+			utils.Handler(data, httpClient.PostRequest)
+		case "delete":
+			utils.Handler(data, httpClient.DeleteRequest)
 		}
 	},
 }

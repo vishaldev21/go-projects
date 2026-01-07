@@ -1,16 +1,12 @@
 package httpClient
 
 import (
-	"errors"
 	"reqster/internal/types"
 
 	"github.com/go-resty/resty/v2"
 )
 
-func PostRequest(data types.DataP) (*string, error) {
-	if data.Body == "" {
-		return nil, errors.New("Body is not provided")
-	}
+func DeleteRequest(data types.DataP) (*string, error) {
 	client := resty.New()
 	if len(data.Headers) > 0 {
 		client = client.SetHeaders(data.Headers)
@@ -21,7 +17,7 @@ func PostRequest(data types.DataP) (*string, error) {
 	if len(data.Params) > 0 {
 		client = client.SetPathParams(data.Params)
 	}
-	response, err := client.R().SetBody(data.Body).Post(data.URL)
+	response, err := client.R().Delete(data.URL)
 	if err != nil {
 		return nil, err
 	}
