@@ -26,9 +26,9 @@ and provides a simple interface for testing APIs and interacting with web servic
 		}
 		method := args[0]
 		url := args[1]
-		headerData := flags.HeaderParser(header)
-		queryData := flags.ParamParser(query)
-		paramsData := flags.ParamParser(params)
+		headerData := flags.Parser(header, ":")
+		queryData := flags.Parser(query, "=")
+		paramsData := flags.Parser(params, "=")
 		if !utils.MethodValidator(method) {
 			fmt.Println("Method not allowed")
 			return
@@ -60,6 +60,6 @@ func Execute() {
 func init() {
 	rootCmd.PersistentFlags().StringArrayVarP(&query, "query", "q", []string{}, "takes query string of the url")
 	rootCmd.PersistentFlags().StringArrayVarP(&header, "header", "H", []string{}, "takes headers of the request")
-	rootCmd.PersistentFlags().StringArrayVarP(&params, "params", "P", []string{}, "takes params of the url")
+	rootCmd.PersistentFlags().StringArrayVarP(&params, "params", "p", []string{}, "takes params of the url")
 	rootCmd.PersistentFlags().StringVarP(&body, "body", "b", "", "takes body of the request")
 }
