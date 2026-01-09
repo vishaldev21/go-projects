@@ -1,11 +1,8 @@
 package utils
 
+import "slices"
+
 func MethodValidator(method string) bool {
 	methodAllowed := []string{"get", "post", "put", "patch", "delete"}
-	for _, val := range methodAllowed {
-		if method == val {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(methodAllowed, method)
 }

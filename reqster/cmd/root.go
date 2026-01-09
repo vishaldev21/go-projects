@@ -11,7 +11,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var method, body string
+var method, body, bodyPath string
 var query, header, params []string
 
 var rootCmd = &cobra.Command{
@@ -35,11 +35,12 @@ and provides a simple interface for testing APIs and interacting with web servic
 			return
 		}
 		data := types.DataP{
-			URL:     url,
-			Headers: headerData,
-			Params:  paramsData,
-			Query:   queryData,
-			Body:    body,
+			URL:      url,
+			Headers:  headerData,
+			Params:   paramsData,
+			Query:    queryData,
+			Body:     body,
+			BodyPath: bodyPath,
 		}
 		switch method {
 		case "get":
@@ -66,4 +67,5 @@ func init() {
 	rootCmd.PersistentFlags().StringArrayVarP(&header, "header", "H", []string{}, "takes headers of the request")
 	rootCmd.PersistentFlags().StringArrayVarP(&params, "params", "p", []string{}, "takes params of the url")
 	rootCmd.PersistentFlags().StringVarP(&body, "body", "b", "", "takes body of the request")
+	rootCmd.PersistentFlags().StringVarP(&bodyPath, "body-file", "B", "", "takes body of the request from a file")
 }
