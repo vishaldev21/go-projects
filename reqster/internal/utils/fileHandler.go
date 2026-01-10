@@ -10,3 +10,11 @@ func ReadFile(filePath string) (*string, error) {
 	data := string(byteData)
 	return &data, nil
 }
+
+func WriteFile(filePath string, data []byte) (bool, error) {
+	err := os.WriteFile(filePath, data, 0644)
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}
